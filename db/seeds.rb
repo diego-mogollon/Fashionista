@@ -2,32 +2,36 @@ puts "cleaning up database"
 Item.destroy_all
 
 puts "database is clean"
-
+puts 'Creating 1 user...'
+user_1 = User.create(email: "user@user.com.tr", password: 111111)
+puts "#{User.count} User created..."
 puts 'Creating 3 items...'
 
-items_att = [
-  {
-    name: 'Chin Chin',
-    price: rand(30..50),
-    description: Faker::Lorem.sentences(number: 1),
-    size: 
-  },
+Item.create(name: 'Chin Chin', price: rand(30..50), description: Faker::Lorem.sentences(number: 1), size: "XS", user_id: user_1.id )
 
-  {
-    name:         'Tulum',
-    price:      '217 Carlisle St, Balaclava VIC 3183',
-    description: Faker::Lorem.sentences(number: 1),
-    size: 
-  },
+puts "#{Item.count} Item created..."
+# items_att = [
+#   {
+#     name: 'Chin Chin',
+#     price: rand(30..50),
+#     description: Faker::Lorem.sentences(number: 1),
+#     size: "XS"
+#   },
 
-  {
-    name:         'Maha',
-    price:      '21 Bond St, Melbourne VIC 3000',
-    description: Faker::Lorem.sentences(number: 1),
-    size: 
-  },
+#   {
+#     name: 'Tulum',
+#     price: rand(30..50),
+#     description: Faker::Lorem.sentences(number: 1),
+#     size: "XXL" 
+#   },
 
-]
+#   {
+#     name: 'Maha',
+#     price: rand(30..50),
+#     description: Faker::Lorem.sentences(number: 1),
+#     size: "L"
+#   },
+# ]
 
-Restaurant.create!(restaurants_att)
+# Item.create!(items_att)
 puts 'Finished!'
