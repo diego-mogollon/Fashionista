@@ -1,17 +1,18 @@
 class ItemsController < ApplicationController
-    def index 
+skip_before_action :authenticate_user!, only:[:index, :show]
+    def index
       @items = Item.all
     end
 
-    def show 
+    def show
       @item = Item.find(params[:id])
     end
 
-    def new 
+    def new
       @item = Item.new
     end
 
-    def create 
+    def create
       @item = Item.new(item_params)
       if @item.save
         redirect_to item_path(@item)
