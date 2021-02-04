@@ -1,4 +1,14 @@
 <h1>Items</h1>
-<% @items.each do |item| %>
-<%= item.name %> <%= item.size %> <%= item.price %>
-<% end %>
+
+<main>
+  <div class="container">
+    <div class="row">
+      <div>
+        <% @items.each do |item| %>
+         <p>Product Name: <%= item.name %> | Size: <%= item.size %> | Price: <%= item.price %> AUD</p>  
+          <p>Description: <%= item.description %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

@@ -7,7 +7,7 @@ user_1 = User.create(email: "user@user.com.tr", password: 111111)
 puts "#{User.count} User created..."
 puts 'Creating 3 items...'
 
-Item.create(name: 'Chin Chin', price: rand(30..50), description: Faker::Lorem.sentences(number: 1), size: "XS", user_id: user_1.id )
+Item.create(name: 'Chin Chin', price: rand(30..50), description: "Phasellus pretium mauris erat, at egestas massa accumsan vel.", size: "XS", user_id: user_1.id )
 
 puts "#{Item.count} Item created..."
 # items_att = [
