@@ -14,7 +14,7 @@ skip_before_action :authenticate_user!, only:[:index, :show]
 
     def create
       @item = Item.new(item_params)
-      # @item.user = current_user
+      @item.user = current_user
       if @item.save
         redirect_to item_path(@item)
       else
