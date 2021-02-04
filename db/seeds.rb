@@ -1,6 +1,6 @@
 puts "cleaning up database"
 Item.destroy_all
-
+User.destroy_all
 puts "database is clean"
 puts 'Creating 1 user...'
 user_1 = User.create(email: "user@user.com.tr", password: 111111)
