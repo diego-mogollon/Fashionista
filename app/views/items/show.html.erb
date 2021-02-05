@@ -8,11 +8,11 @@
                     <p class="card-text"><%= @item.size %></p>
                     <p class="card-text"><%= @item.price %></p>
                     <div class="d-flex">
-                      <%= link_to "Rent It!", root_path, class: "btn btn-success" %>
-                      <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
+                      <%= link_to "Rent It!", item_booking, class: "btn btn-success" %> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+  <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
 </div>
