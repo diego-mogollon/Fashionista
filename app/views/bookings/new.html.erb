@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+    <h1> Booking for <%=  @item.name %> </h1>
+      <%= simple_form_for [@item, @booking] do |t| %>
+        <%= t.input :starts_at, as: :string, input_html: { class: "datepicker" } %>
+        <%= t.input :ends_at, as: :string, input_html: { class: "datepicker" } %>
+        <%= t.submit "Book me", class: "btn btn-primary" %>
+      <% end %>
+  </div>
+</div>
