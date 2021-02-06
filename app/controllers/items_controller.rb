@@ -10,15 +10,16 @@ skip_before_action :authenticate_user!, only:[:index, :show]
 
     def new
       @item = Item.new
+      @category = Category.new
     end
 
     def create
       @item = Item.new(item_params)
+      @category = Category.new
       @item.user = current_user
       if @item.save
-        redirect_to new_item_category(@item)
+        redirect_to new_item_item_category_path(@item)
       else
-
         render :new
       end
     end
