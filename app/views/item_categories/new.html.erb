@@ -1,7 +1,7 @@
 
 <div class="container" > <div class="row"><div class="col-6 mx-auto">
-<%= simple_form_for([@item, @item_category], url: items_path) do |f| %>
-<%= f.association :category, collection: Category::CATEGORIES, input_html: {multiple: true}, include_hidden: false %>
+<%= simple_form_for([@item, @item_category]) do |f| %>
+<%= f.association :category, input_html: {multiple: true}, include_hidden: false %>
 <%= f.button :submit, "Add Category", class: "btn btn-lg" %>
 <% end %>
 
