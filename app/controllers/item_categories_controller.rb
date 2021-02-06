@@ -9,8 +9,7 @@ def create
 
   @item = Item.find(params[:item_id])
   @item_category = ItemCategory.new
-
-
+raise
       # @category = Item.new(item_params)
       # @category = Category.new
       # @item.user = current_user
