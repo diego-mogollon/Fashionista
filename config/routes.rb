@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
   resources :items do
-    resources :booking
+    resources :bookings
   end
 end
