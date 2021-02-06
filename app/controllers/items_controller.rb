@@ -16,10 +16,11 @@ skip_before_action :authenticate_user!, only:[:index, :show]
       @item = Item.new(item_params)
       @item.user = current_user
       if @item.save
-        redirect_to item_path(@item)
+        flash[:alert] = 'You have successfully added your item.'
       else
         render :new
       end
+      redirect_to item_path(@item)
     end
 
     def edit
