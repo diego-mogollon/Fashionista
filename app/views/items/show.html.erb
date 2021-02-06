@@ -13,7 +13,7 @@
           <div class="card-body">
             <h2>Reviews</h2>
             <%= link_to 'Add a review', dashboard_path %>
-            <% if @item.reviews.present? %>
+            <% if @item.reviews.exists? %>
             <% @item.reviews.each do |review| %>
             <p><%= '⭐️' * item.rating %> - <%= review.content %></p>
             <% end %>
