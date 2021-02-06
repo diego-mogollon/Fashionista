@@ -7,6 +7,10 @@
           <p class="card-text"><%= @item.description %></p>
           <p class="card-text"><%= @item.size %></p>
           <p class="card-text"><%= @item.price %></p>
+          <ul> <% @item.categories.each do |category| %>
+                 <li><%= category.name %></li>
+                <%end%>
+          </ul>
           <div class="d-flex">
             <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
           </div>
@@ -15,7 +19,7 @@
             <%= link_to 'Add a review', dashboard_path %>
             <% if @item.reviews.exists? %>
             <% @item.reviews.each do |review| %>
-            <p><%= '⭐️' * item.rating %> - <%= review.content %></p>
+            <p><%= ':star:️' * item.rating %> - <%= review.content %></p>
             <% end %>
             <% else %>
             <p>This item has no reviews</p>
@@ -26,7 +30,8 @@
 </div>
 </div>
 </div>
-  <div class="d-flex"
-  <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
-  <%= link_to "Rent It!", new_item_booking_path(@item), class: "btn btn-success" %> 
-  </div>
+    <div class="d-flex">
+      <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
+      <%= link_to "Rent It!", new_item_booking_path(@item), class: "btn btn-success" %> 
+    </div>
+

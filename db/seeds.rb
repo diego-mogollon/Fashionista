@@ -23,4 +23,10 @@ Item.create(name: 'Lacoste', price: rand(30..100), description: "Phasellus preti
 
 puts "#{Item.count} Item created..."
 
+
+['Casual', 'Daytime', 'Date Night', 'Work', 'Maternity', 'Everything'].each  do |category|
+  Category.create(name: category)
+  end
+
+
 puts 'Finished!'
