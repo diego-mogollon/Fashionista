@@ -1,21 +1,37 @@
 <div class="container">
-    <div class="row">
-        <div class="col-6 mx-auto">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title"><%= @item.name %></h5>
-                    <p class="card-text"><%= @item.description %></p>
-                    <p class="card-text"><%= @item.size %></p>
-                    <p class="card-text"><%= @item.price %></p>
-                    <ul> <% @item.categories.each do |category| %>
-                      <li><%= category.name %></li>
-                     <%end%></ul>
-
-                    <div class="d-flex">
-                        <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= @item.name %></h5>
+          <p class="card-text"><%= @item.description %></p>
+          <p class="card-text"><%= @item.size %></p>
+          <p class="card-text"><%= @item.price %></p>
+          <ul> <% @item.categories.each do |category| %>
+                 <li><%= category.name %></li>
+                <%end%>
+          </ul>
+          <div class="d-flex">
+            <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
+          </div>
+          <div class="card-body">
+            <h2>Reviews</h2>
+            <%= link_to 'Add a review', dashboard_path %>
+            <% if @item.reviews.exists? %>
+            <% @item.reviews.each do |review| %>
+            <p><%= ':star:️' * item.rating %> - <%= review.content %></p>
+            <% end %>
+            <% else %>
+            <p>This item has no reviews</p>
+            <% end %>
+          </div>
     </div>
+  </div>
 </div>
+</div>
+</div>
+    <div class="d-flex">
+      <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
+      <%= link_to "Rent It!", new_item_booking_path(@item), class: "btn btn-success" %> 
+    </div>
+
