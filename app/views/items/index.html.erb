@@ -1,17 +1,16 @@
-<h1>Items</h1>
 <main>
-    <div class="container">
-        <%= link_to 'Add Item', new_item_path, class: 'btn btn-danger' %>
-        <div class="row">
-            <div>
-                <% @items.each do |item| %>
-                <p>Product Name: <%= item.name %> | Size: <%= item.size %> | Price: <%= item.price %> AUD</p>
-                <p>Description: <%= item.description %></p>
-                <%= link_to 'Show', item_path(item), class: 'btn btn-primary' %>
-                <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-success' %>
-                <%= link_to 'Delete', new_item_path, class: 'btn btn-danger' %>
-                <% end %>
-            </div>
-        </div>
+  <h1>Items</h1>
+  <div class="container">
+    <%= link_to 'Add Item', new_item_path, class: 'btn btn-danger' %>
+    <div class="row">
+      <div>
+        <% @items.each do |item| %>
+          <p>Product Name: <%= item.name %> | Size: <%= item.size %> | Price: <%= item.price %> AUD</p>
+          <%= link_to 'Show', item_path(item), class: 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-warning' %>
+          <%= link_to 'Delete', new_item_path, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
     </div>
+  </div>
 </main>
