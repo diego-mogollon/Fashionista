@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :items, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :reviews, only: [:new, :create]
   end
+  get "dashboard" => "pages#dashboard"
 end
