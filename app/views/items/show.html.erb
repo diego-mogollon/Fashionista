@@ -7,6 +7,10 @@
                     <p class="card-text"><%= @item.description %></p>
                     <p class="card-text"><%= @item.size %></p>
                     <p class="card-text"><%= @item.price %></p>
+                    <ul> <% @item.categories.each do |category| %>
+                      <li><%= category.name %></li>
+                     <%end%></ul>
+
                     <div class="d-flex">
                         <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
                     </div>

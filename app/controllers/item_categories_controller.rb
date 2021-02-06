@@ -6,23 +6,24 @@ end
 
 
 def create
-
   @item = Item.find(params[:item_id])
-  @item_category = ItemCategory.new
-raise
-      # @category = Item.new(item_params)
-      # @category = Category.new
-      # @item.user = current_user
-      # if @item.save
-      #   redirect_to new_item_item_category_path(@item)
-      # else
-      #   render :new
+
+  category_ids = params[:item_category][:category_id]
+
+category_ids.each do |category_id|
+  @item_category = ItemCategory.new(item_id: @item.id, category_id: category_id)
+
+  @item_category.save
+
+end
+
+redirect_to item_path(@item)
 end
 
       private
 
   def item_category_params
-    params.require(:item_category).permit(:item_id)
+    params.require(:item_category).permit(:category_item)
   end
 end
 
