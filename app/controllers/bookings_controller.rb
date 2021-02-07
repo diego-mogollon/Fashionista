@@ -40,7 +40,6 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:item_id])
     @booking.destroy
     redirect_to root_path
   end
