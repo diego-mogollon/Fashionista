@@ -27,18 +27,22 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:item_id])
   end
 
   def update
     @item = Item.find(params[:item_id])
-    @booking = Booking.new(booking_params)
-    @booking.save!
-    redirect_to booking_path(@booking)
+    if @booking.update(booking_params)
+    redirect_to item_booking_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @item = Item.find(params[:item_id])
     @booking.destroy
-    redirect_to bookings_path
+    redirect_to root_path
   end
 
   private
