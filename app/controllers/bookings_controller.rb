@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :make_booking, only: [:show, :edit, :update, :destroy]
+
   def new
     @item = Item.find(params[:item_id])
     @booking = Booking.new
@@ -21,23 +23,29 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
     @item = @booking.item
   end
 
-  # def update
-  #   @booking = Booking.find(params[:id])
-  #   @booking.save!
-  #   redirect_to booking_path(@booking)
-  # end
+  def edit
+  end
 
-  # def destroy
-  #   @booking = Booking.find(params[:id])
-  #   @booking.destroy
-  #   redirect_to root_path
-  # end
+  def update
+    @item = Item.find(params[:item_id])
+    @booking = Booking.new(booking_params)
+    @booking.save!
+    redirect_to booking_path(@booking)
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to bookings_path
+  end
 
   private
+
+  def make_booking
+    @booking = Booking.find(params[:id])
+  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
