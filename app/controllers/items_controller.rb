@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
-skip_before_action :authenticate_user!, only:[:index, :show]
+  before_action :make_item, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only:[:index, :show]
+
     def index
       @items = Item.all
     end
 
     def show
-      @item = Item.find(params[:id])
     end
 
     def new
@@ -30,11 +31,9 @@ skip_before_action :authenticate_user!, only:[:index, :show]
     end
 
     def edit
-      @item = Item.find(params[:id])
     end
 
     def update
-      @item = Item.find(params[:id])
       if @item.update(item_params)
         redirect_to item_path(@item)
       else
@@ -43,12 +42,16 @@ skip_before_action :authenticate_user!, only:[:index, :show]
     end
 
     def destroy
-      @item = Item.find(params[:id])
       @item.destroy
       redirect_to root_path
     end
 
     private
+
+    def make_item
+      @item = Item.find(params[:id])
+    end
+
     def item_params
       params.require(:item).permit(:name, :price, :size, :description)
     end
