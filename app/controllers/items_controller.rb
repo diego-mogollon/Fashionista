@@ -19,14 +19,14 @@ skip_before_action :authenticate_user!, only:[:index, :show]
       @item.user = current_user
       if @item.save
 
-        redirect_to new_item_item_category_path(@item)
+        redirect_to new_item_item_category_path(@item) and return
 
         flash[:alert] = 'You have successfully added your item.'
 
       else
         render :new
       end
-      redirect_to item_path(@item)
+      redirect_to item_path(@item) and return
     end
 
     def edit
@@ -36,7 +36,7 @@ skip_before_action :authenticate_user!, only:[:index, :show]
     def update
       @item = Item.find(params[:id])
       if @item.update(item_params)
-        redirect_to item_path(@item)
+        redirect_to item_path(@item) and return
       else
         render :edit
       end
@@ -45,11 +45,11 @@ skip_before_action :authenticate_user!, only:[:index, :show]
     def destroy
       @item = Item.find(params[:id])
       @item.destroy
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     private
     def item_params
-      params.require(:item).permit(:name, :price, :size, :description)
+      params.require(:item).permit(:name, :price, :size, :description, :photo)
     end
 end
