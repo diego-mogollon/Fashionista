@@ -14,3 +14,5 @@ class Booking < ApplicationRecord
     end
  end
 end
+
+# Thanks to => https://medium.com/@sonia.montero/date-validations-and-flatpickr-setup-for-rails-24c78d6eb784
