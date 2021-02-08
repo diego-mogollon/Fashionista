@@ -1,14 +1,20 @@
 <main>
   <h1>Items</h1>
   <div class="container">
-    <%= link_to 'Add Item', new_item_path, class: 'btn btn-danger' %>
+    <% if policy(Item).new? %>
+      <%= link_to 'Add New Item', new_item_path, class: 'btn btn-outline-danger' %>
+    <% end %>
     <div class="row">
       <div>
         <% @items.each do |item| %>
           <p>Product Name: <%= item.name %> | Size: <%= item.size %> | Price: <%= item.price %> AUD</p>
-          <%= link_to 'Show', item_path(item), class: 'btn btn-primary' %>
-          <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-warning' %>
-          <%= link_to 'Delete', new_item_path, class: 'btn btn-danger' %>
+          <%= link_to 'Show', item_path(item), class: 'btn btn-success' %>
+          <% if policy(item).edit?  %>
+            <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-warning' %>
+          <% end %>
+          <% if policy(item).destroy? %>
+            <%= link_to 'Delete', item_path(item), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure?" }  %>
+          <% end %>
         <% end %>
       </div>
     </div>
