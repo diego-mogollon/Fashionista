@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
 
     def update
       if @item.update(item_params)
-        redirect_to item_path(@item)
+        redirect_to item_path(@item) and return
       else
         render :edit
       end
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
 
     def destroy
       @item.destroy
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     private
@@ -51,6 +51,6 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :price, :size, :description)
+      params.require(:item).permit(:name, :price, :size, :description, :photo)
     end
 end

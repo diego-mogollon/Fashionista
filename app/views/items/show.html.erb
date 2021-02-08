@@ -25,13 +25,23 @@
             <p>This item has no reviews</p>
             <% end %>
           </div>
+          <div class="card-body">
+            <li class="list-inline-item">
+              <%= cl_image_tag @item.photo.key, height: 200, width: 200, crop: :scale %>
+            </li>
+          </div>
     </div>
   </div>
-</div>
-</div>
-</div>
-    <div class="d-flex">
+  <div class="dflex">
+      <div class="card-body">
       <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
-      <%= link_to "Rent It!", new_item_booking_path(@item), class: "btn btn-success" %> 
+      <%= link_to "Rent It!", new_item_booking_path(@item), class: "btn btn-success" %>
     </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+
 
