@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @item = item.find(params[:item_id])
     @review.item = @item
-    authorize @item
+    authorize @booking
     if @review.save
       redirect_to item_path(@item)
     else
