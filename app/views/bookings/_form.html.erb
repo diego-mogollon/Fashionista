@@ -1,6 +1,10 @@
-<%= simple_form_for [@item, @booking] do |t| %>
-  <%= t.input :start_date, as: :string, required: :true, input_html: { class: "datepicker" } %>
-  <%= t.input :end_date, as: :string, required: :true, input_html: { class: "datepicker" } %>
-  <%= t.submit "Confirm Your Booking", class: "btn btn-success" %>
+<div id='item-booking-dates' data-unavailable="<%= @item.unavailable_dates.to_json %>">
+  <% if current_user.id != @item.user_id  %>
+    <%= simple_form_for [@item, @booking] do |t| %>
+      <%= t.input :start_date, as: :string, required: :true, input_html: { id: "booking_start_date" } %>
+      <%= t.input :end_date, as: :string, required: :true, input_html: { id: "booking_end_date" } %>
+      <%= t.submit "Confirm Your Booking", class: "btn btn-success" %>
+    <% end %>
+  <% end %>
   <%= link_to "Back to Items", items_path, class: "btn btn-primary" %>
-<% end %>
+</div>
