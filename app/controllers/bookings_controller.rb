@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   def new
     @item = Item.find(params[:item_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
@@ -11,6 +12,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.item = @item
     @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to item_booking_path(@item, @booking)
     else
@@ -48,6 +50,7 @@ class BookingsController < ApplicationController
 
   def make_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def booking_params
