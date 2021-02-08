@@ -1,7 +1,9 @@
 <main>
   <h1>Items</h1>
   <div class="container">
-    <%= link_to 'Add Item', new_item_path, class: 'btn btn-outline-danger' %>
+    <% if policy(Item).new? %>
+      <%= link_to 'Add New Item', new_item_path, class: 'btn btn-outline-danger' %>
+    <% end %>
     <div class="row">
       <div>
         <% @items.each do |item| %>

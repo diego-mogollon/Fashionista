@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
   before_action :make_item, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only:[:index, :show]
-
     def index
       # @items = Item.all
       @items = policy_scope(Item).order(created_at: :desc)
