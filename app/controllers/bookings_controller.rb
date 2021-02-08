@@ -1,7 +1,10 @@
 class BookingsController < ApplicationController
+  before_action :make_booking, only: [:show, :edit, :update, :destroy]
+
   def new
     @item = Item.find(params[:item_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
@@ -9,6 +12,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.item = @item
     @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to item_booking_path(@item, @booking)
     else
@@ -21,23 +25,33 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
     @item = @booking.item
   end
 
-  # def update
-  #   @booking = Booking.find(params[:id])
-  #   @booking.save!
-  #   redirect_to booking_path(@booking)
-  # end
+  def edit
+    @item = Item.find(params[:item_id])
+  end
 
-  # def destroy
-  #   @booking = Booking.find(params[:id])
-  #   @booking.destroy
-  #   redirect_to root_path
-  # end
+  def update
+    @item = Item.find(params[:item_id])
+    if @booking.update(booking_params)
+    redirect_to item_booking_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to root_path
+  end
 
   private
+
+  def make_booking
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
