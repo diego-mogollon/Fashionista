@@ -1,15 +1,16 @@
 class ReviewsController < ApplicationController
   def new
-    @item = item.find(params[:item_id])
     @review = Review.new
+    @booking = Booking.find(params[:booking_id])
     authorize @review
   end
 
   def create
-    @review = Review.new(review_params)
-    @item = item.find(params[:item_id])
-    @review.item = @item
-    authorize @booking
+    @review = Review.new(strong_params)
+    @booking = Booking.find(params[:booking_id])
+    @review.booking = @booking
+    @item = @booking.item
+    authorize @item
     if @review.save
       redirect_to item_path(@item)
     else
@@ -20,6 +21,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :content, :booking_id)
+    params.require(:review).permit(:rating, :content)
   end
 end
