@@ -1,9 +1,9 @@
 import flatpickr from "flatpickr";
 
-const startDateInput = document.getElementById("booking_start_date");
-const endDateInput = document.getElementById("booking_end_date");
 // console.log("im in the file");
 const initFlatpickr = () => {
+  const startDateInput = document.getElementById("booking_start_date");
+  const endDateInput = document.getElementById("booking_end_date");
   if (startDateInput) {
     const unavailableDates = JSON.parse(
       document.querySelector("#item-booking-dates").dataset.unavailable
