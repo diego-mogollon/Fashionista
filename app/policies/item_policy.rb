@@ -14,6 +14,10 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    record.user == user
+  end
+
+  def destroy?
+    record.user == user
   end
 end
