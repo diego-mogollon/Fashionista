@@ -27,7 +27,11 @@
           </div>
           <div class="card-body">
             <li class="list-inline-item">
+              <% if @item.photo.attached? %>
               <%= cl_image_tag @item.photo.key, height: 200, width: 200, crop: :fit %>
+              <% else %>
+              <p>Oops! This item doesn't have an image!</p>
+              <% end %>
             </li>
           </div>
     </div>
