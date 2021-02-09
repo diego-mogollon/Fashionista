@@ -1,14 +1,40 @@
 // Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
+@import 'config/fonts';
+@import 'config/colors';
+@import 'config/bootstrap_variables';
 
 // External libraries
-@import "bootstrap/scss/bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'bootstrap/scss/bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 // Your CSS partials
-@import "components/index";
-@import "pages/index";
-@import "flatpickr/dist/flatpickr";
+@import 'components/index';
+@import 'pages/index';
+@import 'pages/home';
+@import 'flatpickr/dist/flatpickr';
+
+body {
+  padding: 0;
+  margin: 0;
+  a {
+    color: $black;
+  }
+  overflow: hidden;
+}
+
+.landing-page-container,
+.page-container {
+  position: relative;
+  height: 100vh;
+  background-color: white;
+}
+
+.landing-page-container {
+  background-image: asset-url('background_images/background2.jpg');
+  background-size: cover;
+}
+
+.page-container {
+  background-color: #d7eff1;
+}
