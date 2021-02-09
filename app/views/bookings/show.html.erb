@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-header">
     <h1>Thanks for booking <%= @item.name %></h1>
+    <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
   </div>
   <div class="card-body">
     <h5 class="card-title">Your Booking Details:</h5>
