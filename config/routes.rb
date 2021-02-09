@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :item_categories
 
   end
-
-  resources :dashboard, only: [:index]
+  
+  get '/dashboard', to: 'pages#dashboard'
 
 end
