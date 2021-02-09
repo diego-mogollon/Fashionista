@@ -13,7 +13,10 @@
 </head>
 
 <body>
-    <div class="container-fluid <%= current_user ? "page-container": "landing-page-container" %>">
+    <div class="container-fluid page-container">
+        <%if current_user %>
+        <%= image_tag('background_images/background2.jpg', class: 'background-image') %>
+        <%end%>
         <%= render "shared/navbar" %>
         <% if !notice.nil? %>
         <p class="notice"><%= notice %></p>
