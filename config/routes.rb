@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: 'items#index'
+  authenticated :user do
+    root to: 'items#index', as: :authenticated_root
+  end
 
+  root to: 'pages#home'
 
   resources :items do
     resources :bookings
