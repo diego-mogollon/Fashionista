@@ -1,0 +1,66 @@
+.form {
+  padding: 0;
+}
+
+.form-heading {
+  background-color: $light-blue;
+}
+
+.form-group {
+  width: 100%;
+}
+
+input[type='email']::placeholder,
+input[type='password']::placeholder {
+  text-transform: uppercase;
+  font-family: $body-font;
+  font-size: $font-size-base * 0.8;
+}
+
+.form-check label {
+  font-family: $body-font;
+  font-size: $font-size-base * 0.8;
+}
+.form-control {
+  padding: $font-size-base * 2 $font-size-base;
+  border: none;
+  border-bottom: 2.5px solid $light-gray;
+}
+
+.auth-action-container {
+  padding: 0;
+  width: 100%;
+}
+
+.auth-buttons {
+  background: $black;
+  cursor: pointer;
+  color: $white;
+  border: 1px solid $black;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: $body-font;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  height: 50px;
+  letter-spacing: 1px;
+  line-height: 50px;
+  max-width: 100%;
+  min-width: 350px;
+  margin: 10px auto;
+  &:hover {
+    color: $black;
+    background-color: $white;
+  }
+}
+
+a:hover {
+  text-decoration: none;
+  color: $black;
+}
+
+small {
+  padding-left: 12px;
+}
