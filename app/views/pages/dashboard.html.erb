@@ -9,17 +9,5 @@
         <p>You do not have any items</p>
       <% end %>
     </div>
-
-
-
-    <div>
-      <% if @user.bookings.present? %>
-        <% @user.bookings.each do |booking| %>
-          <%= booking.start_date %> <%= booking.end_date %>
-        <% end %>
-      <% else %>
-        <p>You do not have any bookings</p>
-      <% end %>
-    </div>
   </div>
 </div>
