@@ -1,4 +1,5 @@
 import { initFlatpickr } from "./plugins/flatpickr";
+import { multipleSelect } from "./plugins/init_select2";
 
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
@@ -24,12 +25,13 @@ require("channels");
 
 // External imports
 import "bootstrap";
-
+import "select2/dist/css/select2.css";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener("turbolinks:load", () => {
   // Call your functions here, e.g:
   // initSelect2();
+  multipleSelect();
   initFlatpickr();
 });
