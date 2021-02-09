@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: 'items#index'
+  authenticated :user do
+    root to: 'items#index', as: :authenticated_root
+  end
 
+  root to: 'items#index'
 
   resources :items do
     resources :bookings
@@ -14,6 +17,7 @@ Rails.application.routes.draw do
     resources :item_categories
 
   end
-  get "dashboard" => "pages#dashboard"
+  
+  get '/dashboard', to: 'pages#dashboard'
 
 end
