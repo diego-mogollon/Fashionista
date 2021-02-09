@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root to: 'items#index', as: :authenticated_root
   end
 
-  root to: 'pages#home'
+  root to: 'items#index'
 
   resources :items do
     resources :bookings
@@ -17,9 +17,7 @@ Rails.application.routes.draw do
     resources :item_categories
 
   end
-  
-  namespace :user do
-    root :to => "dashboard#show" #https://guides.rubyonrails.org/routing.html
-  end
+
+  resources :dashboard, only: [:index]
 
 end

@@ -1,10 +1,8 @@
 class DashboardController < ApplicationController
-  before_action :authenticate_user!
 
-  def show
-    @user = User.find(current_user[:id])
-    @bookings = @user.booking
-    @items = @user.item
-    @reviews = @user.review
+  def index
+    @user = current_user
+    # @items = @user.items
+    authorize @user
   end
 end
