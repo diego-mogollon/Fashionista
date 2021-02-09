@@ -3,6 +3,15 @@
     <div class="col-6 mx-auto">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
+                    <div class="card-body">
+            <li class="list-inline-item">
+              <% if @item.photo.attached? %>
+              <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
+              <% else %>
+              <p>Oops! This item doesn't have an image!</p>
+              <% end %>
+            </li>
+          </div>
           <h5 class="card-title"><%= @item.name %></h5>
           <p class="card-text"><%= @item.description %></p>
           <p class="card-text"><%= @item.size %></p>
@@ -24,12 +33,9 @@
             <% else %>
             <p>This item has no reviews</p>
             <% end %>
+
           </div>
-          <div class="card-body">
-            <li class="list-inline-item">
-              <%= cl_image_tag @item.photo.key, height: 200, width: 200, crop: :scale %>
-            </li>
-          </div>
+
     </div>
   </div>
   <div class="dflex">
