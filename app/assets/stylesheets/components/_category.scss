@@ -2,3 +2,12 @@
   width: 100px;
   height: 100px;
 }
+
+.margin-top {
+  margin-top: $font-size-base * 10;
+}
+
+.tile_text {
+  font-family: $body-font;
+  font-size: $font-size-base * 0.8;
+}

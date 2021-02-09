@@ -14,20 +14,22 @@
 @import 'pages/home';
 @import 'flatpickr/dist/flatpickr';
 
+// Styling for application.html.erb
+
 body {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   a {
     color: $black;
   }
-  overflow: hidden;
 }
 
 .landing-page-container,
 .page-container {
-  position: relative;
+  // position: relative;
   height: 100vh;
-  background-color: white;
+  background-color: $white;
 }
 
 .landing-page-container {
@@ -36,5 +38,5 @@ body {
 }
 
 .page-container {
-  background-color: #d7eff1;
+  background-color: $white;
 }
