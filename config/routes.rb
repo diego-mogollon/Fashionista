@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :item_categories
 
   end
-  get "dashboard" => "pages#dashboard"
+  
+  namespace :user do
+    root :to => "dashboard#show" #https://guides.rubyonrails.org/routing.html
+  end
 
 end
