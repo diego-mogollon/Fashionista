@@ -8,6 +8,7 @@
     <p class="card-text">Booking start date: <%= @booking.start_date %></p>
     <p class="card-text">Booking end date: <%= @booking.end_date %></p>
     <p class="card-text">Total Cost: <%= @item.price * (((@booking.end_date - @booking.start_date).to_i) / 86400) %></p>
+    <%= link_to "Add a Review", new_item_review(@booking), class: "btn btn-success"%>
     <%= link_to "Back", items_path, class: "btn btn-primary" %>
     <%= link_to "Edit Your Booking", edit_item_booking_path, class: "btn btn-success" %>
     <%= link_to "Cancel Your Booking", item_booking_path(@booking), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
