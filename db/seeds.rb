@@ -1,7 +1,7 @@
 puts "cleaning up database"
 Item.destroy_all
 User.destroy_all
-
+Category.destroy_all
 puts "database is clean"
 
 puts 'Creating 6 user...'

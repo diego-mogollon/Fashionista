@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root to: 'items#index', as: :authenticated_root
   end
 
-  root to: 'items#index'
+  root to: 'pages#home'
 
   resources :items do
     resources :bookings
