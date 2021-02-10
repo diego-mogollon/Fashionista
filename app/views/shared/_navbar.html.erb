@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon pt-3 px-5 w-100">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon pt-3 pl-5 w-100">
     <%= link_to render(:partial => 'shared/logo'), new_user_session_path %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -7,9 +7,12 @@
                 <%= link_to image_tag('woman.svg', class: 'auth-icon'), new_user_session_path %>
             </li>
             <% else %>
-            <li class="nav-item active">
-                <%= link_to "My collections", items_path, class: "nav-link" %>
-                <%= link_to "logout", destroy_user_session_path, method: :delete %>
+            <li class="d-flex justify-content-between nav-item active">
+                <%= link_to "Dashboard", items_path, class: "nav-link" %>
+                <%= link_to "Categories", items_path, class: "nav-link" %>
+                <%= link_to "My booking", items_path, class: "nav-link" %>
+                <%= link_to "My reviews", items_path, class: "nav-link" %>
+                <%= link_to image_tag('logout.svg', class: 'auth-icon logout ml-5'), destroy_user_session_path, method: :delete %>
             </li>
         </ul>
         <% end %>

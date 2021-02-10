@@ -20,7 +20,7 @@
 
 
     <div class="d-flex flex-column justify-content-between mt-3 align-items-center">
-        <%= f.button :submit, "Log in", class: "auth-buttons" %>
+        <%= f.button :submit, "Log in", class: "button" %>
         <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
         <%= link_to "Sign up", new_registration_path(resource_name), class: "mt-4" %><br />
         <% end %>

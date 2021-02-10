@@ -14,4 +14,9 @@
 .auth-icon {
   width: $font-size-base * 2;
   height: $font-size-base * 2;
+  &.logout {
+    width: $font-size-base * 1.5;
+    height: $font-size-base * 1.5;
+    margin-top: 5px;
+  }
 }
