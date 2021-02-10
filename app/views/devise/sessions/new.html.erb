@@ -1,29 +1,33 @@
-<div class="container py-5">
-  <div class="row">
-    <div class="col-md-6 mx-auto" >
-      <div class="card p-4">
-        <h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
+<div class="col-6 offset-3 border mt-5 form">
+    <div class="form-heading py-3">
+        <h2 class="text-center">Log in to continue.</h2>
+    </div>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs mx-auto">
+        <%= f.input :email,
                 required: false,
                 autofocus: true,
+                label: false,
                 input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
+        <%= f.input :password,
                 required: false,
+                label: false,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-      </div>
-
+        <div class="row mx-auto px-2">
+            <%= f.input :remember_me, class: "col-6 border", as: :boolean if devise_mapping.rememberable? %>
+        </div>
     </div>
-  </div>
+
+
+    <div class="d-flex flex-column justify-content-between mt-3 align-items-center">
+        <%= f.button :submit, "Log in", class: "button" %>
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "mt-4" %><br />
+        <% end %>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "Forgot your password?", new_password_path(resource_name), class: '' %><br />
+        <% end %>
+    </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
 </div>

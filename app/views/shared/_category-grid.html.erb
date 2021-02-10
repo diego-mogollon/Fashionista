@@ -1,10 +1,8 @@
-<div class="row row-cols-3 w-25 align-self-center ml-5 gx-3">
-  <% categories.each do |category| %>
-  <div
-    class="col m-3 tile rounded shadow d-flex flex-column justify-content-around align-items-center"
-  >
-    <%# <%= image_tag(category.image, class: "tile_img w-50")%>
-    <div class="tile_title"><%= category.name %></div>
-  </div>
-  <%end %>
+<div class="row row-cols-3 gx-3 ml-5 margin-top">
+    <% categories.each do |category| %>
+    <div class="col m-3 tile rounded shadow d-flex flex-column justify-content-around align-items-center">
+        <%= image_tag(category.image, class: "w-50") %>
+        <div class="tile_text"><%= category.name %></div>
+    </div>
+    <%end %>
 </div>

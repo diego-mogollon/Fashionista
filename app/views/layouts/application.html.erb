@@ -13,15 +13,24 @@
 </head>
 
 <body>
-    <div class="container-fluid <%= current_user ? "page-container": "landing-page-container" %>">
-        <%= render "shared/navbar" %>
-        <% if !notice.nil? %>
-        <p class="notice"><%= notice %></p>
-        <% end %>
-        <% if !alert.nil? %>
-        <p class="alert"><%= alert %></p>
-        <% end %>
-        <%= yield %>
+    <div class="container-fluid page-container">
+        <div class="row">
+            <div class="col-12">
+                <%= render "shared/navbar" %>
+            </div>
+        </div>
+        <div class="row">
+            <%= yield %>
+            <div class="col-3">
+                <% if !notice.nil? %>
+                <p class="notice"><%= notice %></p>
+                <% end %>
+                <% if !alert.nil? %>
+                <p class="alert"><%= alert %></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 

@@ -1,0 +1,28 @@
+.button {
+  background: $black;
+  cursor: pointer;
+  color: $white;
+  border: 1px solid $black;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: $body-font;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  height: 50px;
+  letter-spacing: 1px;
+  line-height: 50px;
+  max-width: 100%;
+  min-width: 350px;
+  margin: 10px auto;
+  &:hover {
+    color: $black;
+    background-color: $white;
+  }
+  &.small {
+    height: 30px;
+    font-size: $font-size-base * 0.8;
+    padding: 10px 30px;
+  }
+}
