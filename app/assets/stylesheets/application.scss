@@ -1,19 +1,19 @@
 // Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
+@import 'config/fonts';
+@import 'config/colors';
+@import 'config/bootstrap_variables';
 
 // External libraries
-@import "bootstrap/scss/bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'bootstrap/scss/bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 // Your CSS partials
-@import "components/index";
-@import "pages/index";
-@import "pages/home";
-@import "flatpickr/dist/flatpickr";
-@import "select2/dist/css/select2";
+@import 'components/index';
+@import 'pages/index';
+@import 'pages/home';
+@import 'flatpickr/dist/flatpickr';
+@import 'select2/dist/css/select2';
 
 // Styling for application.html.erb
 
@@ -24,6 +24,7 @@ body {
   a {
     color: $black;
   }
+  overflow: hidden;
 }
 
 .landing-page-container,
@@ -34,7 +35,7 @@ body {
 }
 
 .landing-page-container {
-  background-image: asset-url("background_images/background2.jpg");
+  background-image: asset-url('background_images/background2.jpg');
   background-size: cover;
 }
 
