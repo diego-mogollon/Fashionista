@@ -1,14 +1,18 @@
 <div class="card">
   <div class="card-header">
     <h1>Thanks for booking <%= @item.name %></h1>
-    <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
+              <% if @item.photo.attached? %>
+              <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
+              <% else %>
+              <p>Oops! This item doesn't have an image!</p>
+              <% end %>
   </div>
   <div class="card-body">
     <h5 class="card-title">Your Booking Details:</h5>
     <p class="card-text">Booking start date: <%= @booking.start_date %></p>
     <p class="card-text">Booking end date: <%= @booking.end_date %></p>
     <p class="card-text">Total Cost: <%= @item.price * (((@booking.end_date - @booking.start_date).to_i) / 86400) %></p>
-    <%= link_to "Add a Review", new_item_review(@booking), class: "btn btn-success"%>
+    <%= link_to "Add a Review", new_item_review_path(@booking), class: "btn btn-success"%>
     <%= link_to "Back", items_path, class: "btn btn-primary" %>
     <%= link_to "Edit Your Booking", edit_item_booking_path, class: "btn btn-success" %>
     <%= link_to "Cancel Your Booking", item_booking_path(@booking), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
