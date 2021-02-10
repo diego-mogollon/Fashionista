@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     resources :item_categories
 
   end
-  
+
+    resources :bookings, only: [:destroy] do
+      resources :reviews, only: [:new, :create, :show]
+  end
+
   get '/dashboard', to: 'pages#dashboard'
 
 end
