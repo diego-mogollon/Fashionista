@@ -1,22 +1,24 @@
-<main>
-  <h1>Items</h1>
-  <div class="container">
+<div class="row row-cols-9 mt-5 ml-5 pl-4">
+    <%if false%>
     <% if policy(Item).new? %>
-      <%= link_to 'Add New Item', new_item_path, class: 'btn btn-outline-danger' %>
-    <% end %>
-    <div class="row">
-      <div>
-        <% @items.each do |item| %>
-          <p>Product Name: <%= item.name %> | Size: <%= item.size %> | Price: <%= item.price %> AUD</p>
-          <%= link_to 'Show', item_path(item), class: 'btn btn-success' %>
-          <% if policy(item).edit?  %>
-            <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-warning' %>
-          <% end %>
-          <% if policy(item).destroy? %>
-            <%= link_to 'Delete', item_path(item), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure?" }  %>
-          <% end %>
-        <% end %>
-      </div>
+    <%= link_to 'Add New Item', new_item_path, class: 'btn btn-outline-danger' %>
+    <%end%>
+    <%end%>
+
+    <% @items.each do |item| %>
+    <div class="col mr-5 mb-5 item">
+        <div class="d-flex flex-column">
+            <div class="item-image h-75">
+                <%= image_tag('background_images/item1', class: 'image') %>
+            </div>
+            <div class="item-content h-25 py-3">
+                <div class="d-flex justify-content-between">
+                    <p class="text-muted item-name"><%= item.name %></p>
+                    <span class="item-price"><%= item.price %>AUD</span>
+                </div>
+                <%= link_to 'Show', item_path(item), class: 'button small' %>
+            </div>
+        </div>
     </div>
-  </div>
-</main>
+    <%end%>
+</div>
