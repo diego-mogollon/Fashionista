@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
     <div class="col-6 mx-auto">
       <div class="card" style="width: 18rem;">
@@ -18,14 +18,14 @@
           <p class="card-text"><%= @item.price %></p>
           <ul> <% @item.categories.each do |category| %>
                  <li><%= category.name %></li>
-                <%end%>
+                <% end %>
           </ul>
           <div class="d-flex">
             <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
           </div>
           <div class="card-body">
             <h2>Reviews</h2>
-            <%= link_to 'Add a review', dashboard_path %>
+            <%= link_to 'Add a review', new_item_review_path(@item) %>
             <% if @item.reviews.exists? %>
             <% @item.reviews.each do |review| %>
             <p><%= ':star:️' * item.rating %> - <%= review.content %></p>
