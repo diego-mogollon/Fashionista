@@ -1,8 +1,8 @@
 <%= simple_form_for item do |c| %>
-  <%= c.input :name %>
-  <%= c.input :size %>
-  <%= c.input :price %>
-  <%= c.input :description %>
-  <%= c.input :photo, as: :file %>
-  <%= c.submit "#{item.id ? "Edit" : "Add" } Item", class: "btn btn-success" %>
+<%= c.input :name, label: false %>
+<%= c.input :size, label: false %>
+<%= c.input :price, label:false %>
+<%= c.input :description, label:false %>
+<%= c.input :photo, as: :file, label:false %>
+<%= c.submit "#{item.id ? "Edit" : "Add" } Item", class: "button" %>
 <% end %>

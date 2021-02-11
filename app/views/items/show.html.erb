@@ -1,4 +1,3 @@
-
 <div class="col ml-5 mt-5 show-item-container">
     <div class="row">
         <div class="col-12">
@@ -49,61 +48,6 @@
     <div class="row" style="height: 10%">
         <div class="col" style="flex: 0 0 50%"><%= link_to "Rent", new_item_booking_path(@item), class: "button review rent" %></div>
         <div class="col" style="flex: 0 0 50%"><%= link_to "My collections", root_path, class: "button review" %></div>
-=======
-<div class="container my-5">
-    <div class="row">
-        <div class="col-6 mx-auto">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <div class="card-body">
-                        <li class="list-inline-item">
-                            <% if @item.photo.attached? %>
-                            <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
-                            <% else %>
-                            <p>Oops! This item doesn't have an image!</p>
-                            <% end %>
-                        </li>
-                    </div>
-                    <h5 class="card-title"><%= @item.name %></h5>
-                    <p class="card-text"><%= @item.description %></p>
-                    <p class="card-text"><%= @item.size %></p>
-                    <p class="card-text"><%= @item.price %></p>
-                    <ul> <% @item.categories.each do |category| %>
-                        <li><%= category.name %></li>
-                        <% end %>
-                    </ul>
-                    <div class="d-flex">
-                        <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
-                    </div>
-                    <div class="card-body">
-                        <h2>Reviews</h2>
-                        <%= link_to 'Add a review', new_item_review_path(@item) %>
-                        <% if @item.reviews.exists? %>
-                        <% @item.reviews.each do |review| %>
-                        <div class="d-flex justify-content-between">
-                            <% review.rating.times do %>
-                            <i class="fas fa-star"></i>
-                            <%end%>
-                            <p><%= review.content %></p>
-                        </div>
-                        <% end%>
-                        <% else %>
-                        <p>This item has no reviews</p>
-                        <% end %>
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="dflex">
-                <div class="card-body">
-                    <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
-                    <%= link_to "Rent It!", new_item_booking_path(@item), class: "btn btn-success" %>
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
 </div>

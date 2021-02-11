@@ -1,10 +1,11 @@
+<div class="row mt-5 mr-5 pl-2 ml-auto">
+    <div class="col-12">
+        <% if policy(Item).new? %>
+        <%= link_to 'Add New Item', new_item_path, class: 'button rent review' %>
+        <%end%>
+    </div>
+</div>
 <div class="row row-cols-6 mt-5 ml-5 pl-4">
-    <%if false%>
-    <% if policy(Item).new? %>
-    <%= link_to 'Add New Item', new_item_path, class: 'btn btn-outline-danger' %>
-    <%end%>
-    <%end%>
-
     <% @items.each do |item| %>
     <div class="col mr-5 mb-5 item">
         <div class="d-flex flex-column">
