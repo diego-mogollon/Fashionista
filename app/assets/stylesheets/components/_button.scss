@@ -32,5 +32,8 @@
   &.rent {
     background-color: $orange;
     border: none;
+    &:hover {
+      color: $white;
+    }
   }
 }

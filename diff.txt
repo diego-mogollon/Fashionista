@@ -1,0 +1,254 @@
+diff --git a/app/assets/stylesheets/components/_button.scss b/app/assets/stylesheets/components/_button.scss
+index 94352df..463717f 100644
+--- a/app/assets/stylesheets/components/_button.scss
++++ b/app/assets/stylesheets/components/_button.scss
+@@ -32,5 +32,8 @@
+   &.rent {
+     background-color: $orange;
+     border: none;
++    &:hover {
++      color: $white;
++    }
+   }
+ }
+diff --git a/app/assets/stylesheets/devise/_new.scss b/app/assets/stylesheets/devise/_new.scss
+index a18dcc6..4666a6d 100644
+--- a/app/assets/stylesheets/devise/_new.scss
++++ b/app/assets/stylesheets/devise/_new.scss
+@@ -8,6 +8,10 @@
+ 
+ .form-group {
+   width: 100%;
++  &.select2 {
++    border: none;
++    border-bottom: 2.5px solid $light-gray;
++  }
+ }
+ 
+ input[type='email']::placeholder,
+diff --git a/app/views/item_categories/new.html.erb b/app/views/item_categories/new.html.erb
+index 433b0ee..3499789 100644
+--- a/app/views/item_categories/new.html.erb
++++ b/app/views/item_categories/new.html.erb
+@@ -1,10 +1,6 @@
+-<div class="container" > 
+-  <div class="row">
+-    <div class="col-6 mx-auto">
+-      <%= simple_form_for([@item, @item_category]) do |f| %>
+-        <%= f.association :category, input_html: { multiple: true, class: "multiple-select" }, include_hidden: false %>
+-        <%= f.button :submit, "Add Category", class: "btn btn-lg" %>
+-      <% end %>
+-   </div>
+-  </div>
+-</div>
++<div class="col-6 offset-3 mt-5">
++    <%= simple_form_for([@item, @item_category]) do |f| %>
++    <%= f.association :category, input_html: { multiple: true, class: "multiple-select" }, include_hidden: false %>
++    <%= f.button :submit, "Add Category", class: "button" %>
++    <% end %>
++</div>
+\ No newline at end of file
+diff --git a/app/views/items/_form.html.erb b/app/views/items/_form.html.erb
+index 2a964a6..2dfad6d 100644
+--- a/app/views/items/_form.html.erb
++++ b/app/views/items/_form.html.erb
+@@ -1,8 +1,8 @@
+ <%= simple_form_for item do |c| %>
+-  <%= c.input :name %>
+-  <%= c.input :size %>
+-  <%= c.input :price %>
+-  <%= c.input :description %>
+-  <%= c.input :photo, as: :file %>
+-  <%= c.submit "#{item.id ? "Edit" : "Add" } Item", class: "btn btn-success" %>
+-<% end %>
++<%= c.input :name, label: false %>
++<%= c.input :size, label: false %>
++<%= c.input :price, label:false %>
++<%= c.input :description, label:false %>
++<%= c.input :photo, as: :file, label:false %>
++<%= c.submit "#{item.id ? "Edit" : "Add" } Item", class: "button" %>
++<% end %>
+\ No newline at end of file
+diff --git a/app/views/items/index.html.erb b/app/views/items/index.html.erb
+index 5217c5b..e944097 100644
+--- a/app/views/items/index.html.erb
++++ b/app/views/items/index.html.erb
+@@ -1,10 +1,11 @@
++<div class="row mt-5 mr-5 pl-2 ml-auto">
++    <div class="col-12">
++        <% if policy(Item).new? %>
++        <%= link_to 'Add New Item', new_item_path, class: 'button rent review' %>
++        <%end%>
++    </div>
++</div>
+ <div class="row row-cols-6 mt-5 ml-5 pl-4">
+-    <%if false%>
+-    <% if policy(Item).new? %>
+-    <%= link_to 'Add New Item', new_item_path, class: 'btn btn-outline-danger' %>
+-    <%end%>
+-    <%end%>
+-
+     <% @items.each do |item| %>
+     <div class="col mr-5 mb-5 item">
+         <div class="d-flex flex-column">
+diff --git a/app/views/items/new.html.erb b/app/views/items/new.html.erb
+index 9523dda..f013621 100644
+--- a/app/views/items/new.html.erb
++++ b/app/views/items/new.html.erb
+@@ -1,10 +1,3 @@
+-<h1>Add new item</h1>
+-<main id="new-main">
+-    <div class="row justify-content-center">
+-        <div class="item-form">
+-            <%= render 'form', item: @item %>
+-        </div>
+-        <div class="item-form">
+-        </div>
+-    </div>
+-</main>
++<div class="col-6 mt-5 offset-3">
++    <%= render 'form', item: @item %>
++</div>
+\ No newline at end of file
+diff --git a/app/views/items/show.html.erb b/app/views/items/show.html.erb
+index c3fbb6c..19f049c 100644
+--- a/app/views/items/show.html.erb
++++ b/app/views/items/show.html.erb
+@@ -1,5 +1,4 @@
+-
+-<div class="col ml-5 mt-5 show-item-container">
++<div class="col ml-5 mt-5 show-item-container border">
+     <div class="row">
+         <div class="col-12">
+             <h1><%= @item.name %></h1>
+@@ -49,61 +48,60 @@
+     <div class="row" style="height: 10%">
+         <div class="col" style="flex: 0 0 50%"><%= link_to "Rent", new_item_booking_path(@item), class: "button review rent" %></div>
+         <div class="col" style="flex: 0 0 50%"><%= link_to "My collections", root_path, class: "button review" %></div>
+-=======
+-<div class="container my-5">
+-    <div class="row">
+-        <div class="col-6 mx-auto">
+-            <div class="card" style="width: 18rem;">
+-                <div class="card-body">
+-                    <div class="card-body">
+-                        <li class="list-inline-item">
+-                            <% if @item.photo.attached? %>
+-                            <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
+-                            <% else %>
+-                            <p>Oops! This item doesn't have an image!</p>
+-                            <% end %>
+-                        </li>
+-                    </div>
+-                    <h5 class="card-title"><%= @item.name %></h5>
+-                    <p class="card-text"><%= @item.description %></p>
+-                    <p class="card-text"><%= @item.size %></p>
+-                    <p class="card-text"><%= @item.price %></p>
+-                    <ul> <% @item.categories.each do |category| %>
+-                        <li><%= category.name %></li>
+-                        <% end %>
+-                    </ul>
+-                    <div class="d-flex">
+-                        <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
++        <div class="container my-5">
++            <div class="row">
++                <div class="col-6 mx-auto">
++                    <div class="card" style="width: 18rem;">
++                        <div class="card-body">
++                            <div class="card-body">
++                                <li class="list-inline-item">
++                                    <% if @item.photo.attached? %>
++                                    <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
++                                    <% else %>
++                                    <p>Oops! This item doesn't have an image!</p>
++                                    <% end %>
++                                </li>
++                            </div>
++                            <h5 class="card-title"><%= @item.name %></h5>
++                            <p class="card-text"><%= @item.description %></p>
++                            <p class="card-text"><%= @item.size %></p>
++                            <p class="card-text"><%= @item.price %></p>
++                            <ul> <% @item.categories.each do |category| %>
++                                <li><%= category.name %></li>
++                                <% end %>
++                            </ul>
++                            <div class="d-flex">
++                                <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
++                            </div>
++                            <div class="card-body">
++                                <h2>Reviews</h2>
++                                <%= link_to 'Add a review', new_item_review_path(@item) %>
++                                <% if @item.reviews.exists? %>
++                                <% @item.reviews.each do |review| %>
++                                <div class="d-flex justify-content-between">
++                                    <% review.rating.times do %>
++                                    <i class="fas fa-star"></i>
++                                    <%end%>
++                                    <p><%= review.content %></p>
++                                </div>
++                                <% end%>
++                                <% else %>
++                                <p>This item has no reviews</p>
++                                <% end %>
++
++                            </div>
++
++                        </div>
+                     </div>
+-                    <div class="card-body">
+-                        <h2>Reviews</h2>
+-                        <%= link_to 'Add a review', new_item_review_path(@item) %>
+-                        <% if @item.reviews.exists? %>
+-                        <% @item.reviews.each do |review| %>
+-                        <div class="d-flex justify-content-between">
+-                            <% review.rating.times do %>
+-                            <i class="fas fa-star"></i>
+-                            <%end%>
+-                            <p><%= review.content %></p>
++                    <div class="dflex">
++                        <div class="card-body">
++                            <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
++                            <%= link_to "Rent It!", new_item_booking_path(@item), class: "btn btn-success" %>
+                         </div>
+-                        <% end%>
+-                        <% else %>
+-                        <p>This item has no reviews</p>
+-                        <% end %>
+-
+                     </div>
+-
+-                </div>
+-            </div>
+-            <div class="dflex">
+-                <div class="card-body">
+-                    <%= link_to "Back to Items page", root_path, class: "btn btn-primary" %>
+-                    <%= link_to "Rent It!", new_item_booking_path(@item), class: "btn btn-success" %>
+                 </div>
+-            </div>
+-        </div>
+ 
+ 
+-    </div>
++            </div>
+ 
+-</div>
+\ No newline at end of file
++        </div>
+\ No newline at end of file
+diff --git a/config/locales/simple_form.en.yml b/config/locales/simple_form.en.yml
+index 728818b..5321893 100644
+--- a/config/locales/simple_form.en.yml
++++ b/config/locales/simple_form.en.yml
+@@ -10,6 +10,12 @@ en:
+         email: 'Email'
+         password: 'Password'
+         password_confirmation: 'Confirm your password'
++      item:
++        name: 'Name'
++        size: 'Size'
++        price: 'Price'
++        description: 'Description'
++        photo: 'Photo'
+       # You can uncomment the line below if you need to overwrite the whole required html.
+       # When using html, text and mark won't be used.
+       # html: '<abbr title="required">*</abbr>'

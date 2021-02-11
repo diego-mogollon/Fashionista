@@ -1,10 +1,6 @@
-<div class="container" > 
-  <div class="row">
-    <div class="col-6 mx-auto">
-      <%= simple_form_for([@item, @item_category]) do |f| %>
-        <%= f.association :category, input_html: { multiple: true, class: "multiple-select" }, include_hidden: false %>
-        <%= f.button :submit, "Add Category", class: "btn btn-lg" %>
-      <% end %>
-   </div>
-  </div>
+<div class="col-6 offset-3 mt-5">
+    <%= simple_form_for([@item, @item_category]) do |f| %>
+    <%= f.association :category, input_html: { multiple: true, class: "multiple-select" }, include_hidden: false %>
+    <%= f.button :submit, "Add Category", class: "button" %>
+    <% end %>
 </div>

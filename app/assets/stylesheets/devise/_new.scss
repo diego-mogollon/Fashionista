@@ -8,6 +8,10 @@
 
 .form-group {
   width: 100%;
+  &.select2 {
+    border: none;
+    border-bottom: 2.5px solid $light-gray;
+  }
 }
 
 input[type='email']::placeholder,
