@@ -10,17 +10,18 @@ Rails.application.routes.draw do
   resources :items do
     resources :bookings
   end
-  resources :items do
-    resources :reviews, only: [:new, :create]
-  end
-  resources :items do
-    resources :item_categories
 
-  end
-
-    resources :bookings, only: [:destroy] do
+     resources :bookings, only: [:destroy] do
       resources :reviews, only: [:new, :create, :show]
   end
+
+  # resources :items do
+  #   resources :reviews, only: [:new, :create]
+  # end
+
+  # resources :items do
+  #   resources :item_categories
+  # end
 
   get '/dashboard', to: 'pages#dashboard'
 
