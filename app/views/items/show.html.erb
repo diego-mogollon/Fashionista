@@ -19,15 +19,13 @@
     </div>
 </div>
 <div class="col mt-5 show-image-container">
-    <%if false %>
     <% if @item.photo.attached? %>
     <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
     <% else %>
     <p>Oops! This item doesn't have an image!</p>
     <% end %>
-    <%end%>
-    <%= image_tag('background_images/item1', class: 'show-item-image') %>
-</div>
+<!--     <%= image_tag('background_images/item1', class: 'show-item-image') %>
+ --></div>
 <div class="col show-button-container mt-5 ml-2">
     <div class="row" style="height: 10%">
         <div class="col" style="flex: 0 0 50%">
@@ -39,7 +37,7 @@
     <div class="row justify-content-center" style="height: 80%">
         <% if @item.reviews.exists? %>
         <% @item.reviews.each do |review| %>
-        <p><%= ':star:️' * item.rating %> - <%= review.content %></p>
+        <p><%= ':star:️' * review.rating %> - <%= review.content %></p>
         <% end %>
         <% else %>
         <p class="align-self-center">This item has no reviews</p>
