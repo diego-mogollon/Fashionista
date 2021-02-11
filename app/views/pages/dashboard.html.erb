@@ -7,6 +7,15 @@
         <% end %>
       <% else %>
         <p>You do not have any items</p>
+        <%= link_to "Rent clothes here", items_path, class: "button rent review" %>
+      <% end %>
+      <% if @user.bookings.present? %>
+        <% @user.bookings.each do |booking| %>
+          <%= booking.id %>
+        <% end %>
+      <% else %>
+        <p>You do not have any bookings</p>
+        <%= link_to "Rent clothes here", items_path, class: "button rent review" %>
       <% end %>
     </div>
   </div>
