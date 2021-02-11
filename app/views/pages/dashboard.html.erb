@@ -7,7 +7,37 @@
         <% end %>
       <% else %>
         <p>You do not have any items</p>
+        <%= link_to "Rent clothes here", items_path, class: "button rent review" %>
       <% end %>
+      <% if @user.bookings.present? %>
+        <% @user.bookings.each do |booking| %>
+        <!-- Items you booked -->
+        <div class="card">
+          <p>Your booking id is =<%= booking.id %></p>
+          <p>Start date is <%= booking.start_date %></p>
+          <p>End date is <%= booking.end_date %></p>
+          <p>Price = $<%= booking.item.price %></p>
+        <% end %>
+      <% else %>
+        <p>You do not have any bookings</p>
+        <%= link_to "Make a booking here", items_path, class: "button rent review" %>
+      <% end %>
+      <!-- Your posted items bookings -->
+      <div class="card">
+      <% if @my_items_booked.present? %>
+        <% @my_items_booked.each do |booking| %>
+        <div class="card">
+          <p>Booking id is =<%= booking.id %></p>
+          <p>Start date is <%= booking.start_date %></p>
+          <p>End date is <%= booking.end_date %></p>
+          <p>Price = $<%= booking.item.price %></p>
+          <p>Reviews<%= booking.review.content %></p>
+        <% end %>
+      <% else %>
+        <p>Your items have not been booked</p>
+      <% end %>
+      </div>
+      </div>
     </div>
   </div>
 </div>

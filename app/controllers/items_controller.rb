@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     end
 
     def show
-      
+
     end
 
     def new
@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
       authorize @item
       @category = Category.new
       if @item.save
-        redirect_to new_item_item_category_path(@item)
+        redirect_to item_path(@item)
         flash[:alert] = 'You have successfully added your item.'
       else
         render :new
