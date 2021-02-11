@@ -25,4 +25,12 @@
     font-size: $font-size-base * 0.8;
     padding: 10px 30px;
   }
+  &.review {
+    min-width: 200px;
+    padding: 15px 25px;
+  }
+  &.rent {
+    background-color: $orange;
+    border: none;
+  }
 }
