@@ -1,18 +1,18 @@
 class ReviewsController < ApplicationController
-before_action :set_booking, only: :new
+before_action :set_booking, only: [:new, :create]
 
   def new
     @review = Review.new
     # @booking = Booking.find(params[:booking_id])
-    # authorize @review
+    authorize @review
   end
 
   def create
     @review = Review.new(review_params)
     @review.booking = @booking
-    # @item = @booking.item
+    @item = @booking.item
     @review.user = current_user
-    # authorize @item
+    authorize @item
     if @review.save
       redirect_to item_path(@item)
     else
