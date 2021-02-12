@@ -20,11 +20,11 @@
             </div>
         </div>
         <div class="row flex-grow-1 h-100">
+            <% if current_user %>
             <div class="col-3 ml-5">
-                <% if current_user %>
                 <h6>Welcome, <%= current_user.email %>!</h6>
-                <% end %>
             </div>
+            <% end %>
             <%= yield %>
             <div class="col-3">
                 <% if !notice.nil? %>
