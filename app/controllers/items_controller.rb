@@ -41,7 +41,8 @@ class ItemsController < ApplicationController
 
     def destroy
       @item.destroy
-      redirect_to root_path and return
+      flash[:alert] = 'You have successfully deleted your item.'
+      redirect_to dashboard_path and return
     end
 
     private
