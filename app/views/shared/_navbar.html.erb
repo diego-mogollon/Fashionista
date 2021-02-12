@@ -10,9 +10,7 @@
             <li class="d-flex justify-content-between nav-item active">
                 <%= link_to "Clothes", items_path, class: "nav-link" %>
                 <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
-<!--                 <%= link_to "Categories", items_path, class: "nav-link" %> -->
- <!--                <%= link_to "My booking", items_path, class: "nav-link" %>
-                <%= link_to "My reviews", items_path, class: "nav-link" %> -->
+                <%= current_user.email %>
                 <%= link_to image_tag('logout.svg', class: 'auth-icon logout ml-5'), destroy_user_session_path, method: :delete %>
             </li>
         </ul>
