@@ -18,9 +18,9 @@
             <h6>SIZE</h6>
             <% ["XS","S","M","L","XL"].each do |size| %>
             <% if size.eql?(@item.size)%>
-            <span class="badge bg-dark"><%= size%></span>
-            <%else %>
             <span class="badge bg-secondary"><%= size%></span>
+            <%else %>
+            <span class="badge bg-dark"><%= size%></span>
             <%end%>
             <%end%>
         </div>
