@@ -1,43 +1,73 @@
-<div class="container">
-  <div class="row">
-    <div>
-      <% if @user.items.present? %>
-        <% @user.items.each do |item| %>
-          <%= item.name %>
-        <% end %>
-      <% else %>
-        <p>You do not have any items</p>
-        <%= link_to "Rent clothes here", items_path, class: "button rent review" %>
-      <% end %>
-      <% if @user.bookings.present? %>
-        <% @user.bookings.each do |booking| %>
-        <!-- Items you booked -->
-        <div class="card">
-          <p>Your booking id is =<%= booking.id %></p>
-          <p>Start date is <%= booking.start_date %></p>
-          <p>End date is <%= booking.end_date %></p>
-          <p>Price = $<%= booking.item.price %></p>
-        <% end %>
-      <% else %>
-        <p>You do not have any bookings</p>
-        <%= link_to "Make a booking here", items_path, class: "button rent review" %>
-      <% end %>
-      <!-- Your posted items bookings -->
-      <div class="card">
-      <% if @my_items_booked.present? %>
-        <% @my_items_booked.each do |booking| %>
-        <div class="card">
-          <p>Booking id is =<%= booking.id %></p>
-          <p>Start date is <%= booking.start_date %></p>
-          <p>End date is <%= booking.end_date %></p>
-          <p>Price = $<%= booking.item.price %></p>
-          <p>Reviews<%= booking.review.content %></p>
-        <% end %>
-      <% else %>
-        <p>Your items have not been booked</p>
-      <% end %>
-      </div>
-      </div>
+<div class="d-flex flex-column w-100">
+    <div class="col mt-5 ml-5 justify-content-start">
+        <div class="row ml-2">
+            <h5>Welcome back <%= current_user.email %>
+        </div>
     </div>
-  </div>
+    <div class="col mt-5 ml-5 flex-row">
+        <div class="row">
+            <div class="card mb-3" style="min-width: 20rem;">
+                <div class="card-header d-flex justify-content-between">
+                    <h6>You have rented</h6>
+                    <%= link_to "Rent clothes here", items_path, class: "button rent dashboard" %>
+                </div>
+                <div class="card-body">
+                    <% if @user_bookings.present? %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Booking ID#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Start date</th>
+                                <th scope="col">End date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @user_bookings.each do |booking| %>
+                            <tr>
+                                <th scope="row"><%= booking.id %></th>
+                                <td><%= @user_bookings_hash["#{booking.id}"][0].name %></td>
+                                <td><%= @user_bookings_hash["#{booking.id}"][0].price %> AUD</td>
+                                <td><%= booking.start_date.strftime('%m/%d/%Y') %></td>
+                                <td><%= booking.end_date.strftime('%m/%d/%Y') %></td>
+                            </tr>
+                            <%end%>
+                        </tbody>
+                    </table>
+                    <% else %>
+                    <p>You do not have any items</p>
+                    <% end %>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 25rem;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="..." alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 25rem;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="..." alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
