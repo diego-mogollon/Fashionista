@@ -3,8 +3,8 @@
     <%= simple_form_for [@item, @booking] do |t| %>
       <%= t.input :start_date, as: :string, required: :true, input_html: { id: "booking_start_date" } %>
       <%= t.input :end_date, as: :string, required: :true, input_html: { id: "booking_end_date" } %>
-      <%= t.submit "Confirm Your Booking", class: "button confirm" %>
+      <%= t.submit "Confirm Your Booking", class: "button bookingconfirm" %>
     <% end %>
   <% end %>
-  <%= link_to "Back to Items", items_path, class: "button back" %>
+  <%= link_to "Back to Items", items_path, class: "button bookingback" %>
 </div>
