@@ -28,6 +28,8 @@
   }
 
     &.confirm {
+      min-width: 200px;
+    padding: 15px 25px;
     background-color: $secondary;
     border: none;
     &:hover {
@@ -81,11 +83,6 @@
       background-color: $white;
       border: 2px solid $warning;
     }
-  }
-
-  &.back {
-    min-width: 200px;
-    padding: 15px 25px;
   }
 
   &.rent {
