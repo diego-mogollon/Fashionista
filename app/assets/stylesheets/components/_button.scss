@@ -59,6 +59,30 @@
     }
   }
 
+     &.delete {
+    min-width: 200px;
+    padding: 15px 25px;
+    background-color: $delete;
+    border: none;
+    &:hover {
+      color: $delete;
+      background-color: $white;
+      border: 2px solid $delete;
+    }
+  }
+
+     &.edit {
+    min-width: 200px;
+    padding: 15px 25px;
+    background-color: $warning;
+    border: none;
+    &:hover {
+      color: $warning;
+      background-color: $white;
+      border: 2px solid $warning;
+    }
+  }
+
   &.back {
     min-width: 200px;
     padding: 15px 25px;
