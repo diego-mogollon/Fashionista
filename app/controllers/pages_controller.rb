@@ -16,9 +16,9 @@ class PagesController < ApplicationController
         @user_current_bookings << booking
       end
     end
-    raise
 
-    #My items that are booked by other users
+
+    #All my items that are booked by other users
     @my_items_booked = Booking.joins(:item).where("items.user_id" => current_user.id)
     # authorize @user
   end

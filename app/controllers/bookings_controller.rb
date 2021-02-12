@@ -43,6 +43,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    flash[:alert] = "Your current booking was cancelled"
     redirect_to root_path
   end
 
