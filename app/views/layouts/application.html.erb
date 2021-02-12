@@ -19,7 +19,12 @@
                 <%= render "shared/navbar" %>
             </div>
         </div>
-        <div class="row flex-grow-1 h-100 border">
+        <div class="row flex-grow-1 h-100">
+            <div class="col-3 ml-5">
+                <% if current_user %>
+                <h6>Welcome, <%= current_user.email %>!</h6>
+                <% end %>
+            </div>
             <%= yield %>
             <div class="col-3">
                 <% if !notice.nil? %>
