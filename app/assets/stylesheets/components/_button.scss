@@ -16,24 +16,106 @@
   max-width: 100%;
   min-width: 350px;
   margin: 10px auto;
-  &:hover {
-    color: $black;
-    background-color: $white;
-  }
-  &.small {
+
+  &.show {
     height: 30px;
     font-size: $font-size-base * 0.8;
     padding: 10px 30px;
+    &:hover {
+      color: $black;
+      background-color: $white;
+    }
   }
-  &.review {
-    min-width: 200px;
-    padding: 15px 25px;
-  }
-  &.rent {
-    background-color: $orange;
+
+    &.bookingconfirm {
+    background-color: $secondary;
     border: none;
     &:hover {
-      color: $white;
+      color: $secondary;
+      background-color: $white;
+      border: 2px solid $secondary;
+    }
+  }
+
+    &.bookingback {
+      min-width: 200px;
+    padding: 15px 25px;
+    background-color: $warning;
+    border: none;
+    &:hover {
+      color: $warning;
+      background-color: $white;
+      border: 2px solid $warning;
+    }
+  }
+
+    &.confirm {
+      min-width: 200px;
+    padding: 15px 25px;
+    background-color: $secondary;
+    border: none;
+    &:hover {
+      color: $secondary;
+      background-color: $white;
+      border: 2px solid $secondary;
+    }
+  }
+
+      &.back {
+    background-color: $warning;
+    border: none;
+    &:hover {
+      color: $warning;
+      background-color: $white;
+      border: 2px solid $warning;
+    }
+  }
+
+   &.review {
+    min-width: 200px;
+    padding: 15px 25px;
+    background-color: $secondary;
+    border: none;
+    &:hover {
+      color: $secondary;
+      background-color: $white;
+      border: 2px solid $secondary;
+    }
+  }
+
+     &.delete {
+    min-width: 200px;
+    padding: 15px 25px;
+    background-color: $delete;
+    border: none;
+    &:hover {
+      color: $delete;
+      background-color: $white;
+      border: 2px solid $delete;
+    }
+  }
+
+     &.edit {
+    min-width: 200px;
+    padding: 15px 25px;
+    background-color: $warning;
+    border: none;
+    &:hover {
+      color: $warning;
+      background-color: $white;
+      border: 2px solid $warning;
+    }
+  }
+
+  &.rent {
+    min-width: 200px;
+    padding: 15px 25px;
+    background-color: $primary;
+    border: none;
+    &:hover {
+      color: $primary;
+      background-color: $white;
+      border: 2px solid $primary;
     }
   }
 }

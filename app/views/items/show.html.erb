@@ -18,9 +18,9 @@
             <h6>SIZE</h6>
             <% ["XS","S","M","L","XL"].each do |size| %>
             <% if size.eql?(@item.size)%>
-            <span class="badge bg-dark"><%= size%></span>
-            <%else %>
             <span class="badge bg-secondary"><%= size%></span>
+            <%else %>
+            <span class="badge bg-dark"><%= size%></span>
             <%end%>
             <%end%>
         </div>
@@ -28,12 +28,12 @@
     <div class="row mt-5">
         <% if current_user.id != @item.user_id %>
         <div class="col pt-3">
-            <%= link_to "Rent", new_items_booking_path(@item), class: "button review rent" %>
+            <%= link_to "Rent", new_items_booking_path(@item), class: "class: "button review"" %>
         </div>
         <%else%>
         <div class="col pt-3">
-            <%= link_to "Edit", edit_item_path(@item), class: "button review rent" %>
-            <%= link_to "Delete", item_path(@item), method: :delete, class: "button review" %>
+            <%= link_to "Edit", edit_item_path(@item), class: "button edit" %>
+            <%= link_to "Delete", item_path(@item), method: :delete, class: "button delete" %>
         </div>
         <% end %>
     </div>

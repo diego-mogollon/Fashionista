@@ -1,7 +1,7 @@
 <div class="row mt-5 mr-5 pl-2 ml-auto">
     <div class="col-12">
         <% if policy(Item).new? %>
-        <%= link_to 'Add New Item', new_item_path, class: 'button rent review' %>
+        <%= link_to 'Add New Item', new_item_path, class: 'button rent' %>
         <%end%>
     </div>
 </div>
@@ -21,7 +21,7 @@
                     <p class="text-muted item-name"><%= item.name %></p>
                     <span class="item-price"><%= item.price %>AUD</span>
                 </div>
-                <%= link_to 'Show', item_path(item), class: 'button small' %>
+                <%= link_to 'Show', item_path(item), class: 'button show' %>
             </div>
         </div>
     </div>
