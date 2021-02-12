@@ -16,20 +16,27 @@
   max-width: 100%;
   min-width: 350px;
   margin: 10px auto;
-  &:hover {
-    color: $black;
-    background-color: $white;
-  }
-  &.small {
+
+  &.show {
     height: 30px;
     font-size: $font-size-base * 0.8;
     padding: 10px 30px;
+    &:hover {
+      color: $black;
+      background-color: $white;
+    }
   }
   &.review {
     min-width: 200px;
     padding: 15px 25px;
   }
+  &.back {
+    min-width: 200px;
+    padding: 15px 25px;
+  }
   &.rent {
+    min-width: 200px;
+    padding: 15px 25px;
     background-color: $primary;
     border: none;
     &:hover {
