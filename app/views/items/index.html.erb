@@ -9,9 +9,9 @@
     <% @items.each do |item| %>
     <div class="col mr-5 mb-5 item">
         <div class="d-flex flex-column">
-            <div class="item-image h-75">
+            <div class="item-image">
                 <% if item.photo.attached? %>
-                <%= cl_image_tag item.photo.key, height: 800, width: 400, crop: :fit %>
+                <%= cl_image_tag item.photo.key, height: 800, width: 400, crop: :fit, class: "image" %>
                 <% else %>
                 <p class="text-center">Oops! This item doesn't have an image!</p>
                 <% end %>
