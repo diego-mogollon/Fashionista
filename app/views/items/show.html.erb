@@ -1,2 +1,46 @@
-<div class="col ml-5 mt-5 show-item-container">
+<div class="col-5 ml-5 mt-5 mr-2 show-image-container">
+    <% if @item.photo.attached? %>
+    <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
+    <% else %>
+    <p class="ml-3"><strong>Oops! This item doesn't have an image!</strong></p>
+    <% end %>
+</div>
+<div class="col-6 mt-5 show-item-container">
+    <div class="row">
+        <div class="col-12">
+            <h1><%= @item.name %></h1>
+            <p class="text-muted"><%= @item.description %></p>
+            <p class="text-muted"><%= @item.price %> AUD</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pl-3 mt-5">
+            <h6>SIZE</h6>
+            <% ["XS","S","M","L","XL"].each do |size| %>
+            <% if size.eql?(@item.size)%>
+            <span class="badge bg-dark"><%= size%></span>
+            <%else %>
+            <span class="badge bg-secondary"><%= size%></span>
+            <%end%>
+            <%end%>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <h2>Reviews</h2>
+        </div>
+        <% if current_user.id != @item.user_id %>
+        <div class="col ml-auto pt-3"><%= link_to 'Add a review', item_path(@item), class: "review-link" %>
+        </div>
+        <% end %>
+    </div>
+    <div class="row mt-5">
+        <% if @item.reviews.exists? %>
+        <% @item.reviews.each do |review| %>
+        <p><%= ':star:️' * review.rating %> - <%= review.content %></p>
+        <% end %>
+        <% else %>
+        <p class="align-self-center">This item has no reviews</p>
+        <% end %>
+    </div>
 </div>

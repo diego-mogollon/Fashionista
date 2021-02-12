@@ -14,11 +14,14 @@
     padding-top: $font-size-base * 15;
   }
 }
-
 .show-image-container {
   padding: 0;
-  .show-item-image {
-    width: 100%;
-    height: 100%;
-  }
+}
+.show-item-image {
+  width: 100%;
+  height: 100%;
+}
+.review-link {
+  color: $orange;
+  text-decoration: underline;
 }
