@@ -1,20 +1,23 @@
-<div class="card">
-    <div class="card-header">
-        <h1>Thanks for booking <%= @item.name %></h1>
-        <% if @item.photo.attached? %>
-        <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit %>
-        <% else %>
-        <p>Oops! This item doesn't have an image!</p>
-        <% end %>
+<div class="col-6 offset-3 mt-5 h-50">
+    <div class="card mb-3" style="min-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <% if @item.photo.attached? %>
+                <%= cl_image_tag @item.photo.key, height: 800, width: 400, crop: :fit, class: "card-image" %>
+                <% else %>
+                <p>Oops! This item doesn't have an image!</p>
+                <% end %>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Thanks for booking <%= @item.name %></h5>
+                    <p class="card-text">From: <%= @booking.start_date.strftime('%m/%d/%Y') %></p>
+                    <p class="card-text">To: <%= @booking.end_date.strftime('%m/%d/%Y') %></p>
+                    <%= link_to "Continue shopping", items_path, class: "button rent" %>
+                    <%= link_to "My dashboard", dashboard_path, class: "button confirm" %>
+                    <%= link_to "Edit Your Booking", edit_item_booking_path, class: "button edit" %>
+                    <%= link_to "Cancel Your Booking", item_booking_path(@booking), class: "button delete", method: :delete, data: { confirm: "Are you sure?" } %>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <h5 class="card-title">Your Booking Details:</h5>
-        <p class="card-text">Booking start date: <%= @booking.start_date %></p>
-        <p class="card-text">Booking end date: <%= @booking.end_date %></p>
-        <p class="card-text">Total Cost: <%= @item.price * (((@booking.end_date - @booking.start_date).to_i) / 86400) %></p>
-        <%= link_to "Continue shopping", items_path, class: "button rent" %>
-        <%= link_to "My dashboard", dashboard_path, class: "button confirm" %>
-        <%= link_to "Edit Your Booking", edit_item_booking_path, class: "button edit" %>
-        <%= link_to "Cancel Your Booking", item_booking_path(@booking), class: "button delete", method: :delete, data: { confirm: "Are you sure?" } %>
-    </div>
-</div>
