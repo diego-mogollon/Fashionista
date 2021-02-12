@@ -4,7 +4,7 @@
     </div>
     <div class="card mb-3" style="min-width: 20rem;">
         <div class="card-header d-flex justify-content-between">
-            <h6>My current bookings</h6>
+            <h6>Current bookings: Clothes I rented</h6>
         </div>
         <div class="card-body">
             <% if @user_current_bookings.present? %>
@@ -37,7 +37,7 @@
     </div>
     <div class="card mb-3" style="min-width: 25rem;">
         <div class="card-header d-flex justify-content-between">
-            <h6>My previous bookings</h6>
+            <h6>Past bookings: Clothes I rented</h6>
         </div>
         <div class="card-body">
             <% if @user_past_bookings.present? %>
@@ -71,7 +71,7 @@
     </div>
     <div class="card mb-3" style="min-width: 20rem;">
         <div class="card-header d-flex justify-content-between">
-            <h6>My clothing items uploaded</h6>
+            <h6>Bookings: Clothes I posted for rent </h6>
         </div>
         <div class="card-body">
             <% if @my_items_booked.present? %>
