@@ -51,7 +51,9 @@
     <div class="col" style="flex: 0 0 50%"><%= link_to "Rent", new_item_booking_path(@item), class: "button review rent" %>
     </div>
     <% else %>
-        <div class="col" style="flex: 0 0 50%"><%= link_to "Delete item", root_path, class: "button review" %></div>
+    <div class="col" style="flex: 0 0 50%"><%= link_to "Edit", edit_item_path(@item), class: "button review rent" %>
+    </div>
+    <div class="col" style="flex: 0 0 50%"><%= link_to "Delete item", item_path(@item), method: :delete, class: "button review" %></div>
     <% end %>
 
   </div>
