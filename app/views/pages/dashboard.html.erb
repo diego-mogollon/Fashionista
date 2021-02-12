@@ -1,65 +1,105 @@
-<div class="container">
-  <div class="row">
-    <div>
-      <% if @user.items.present? %>
-      <% @user.items.each do |item| %>
-      <%= item.name %>
-      <% end %>
-      <% else %>
-      <p>You do not have any items</p>
-      <%= link_to "Rent clothes", items_path, class: "button rent review" %>
-      <% end %>
-      <!-- Current Bookings I made -->
-            <div class="card">
-      <h2> My current bookings </h2>
-      <% if @user_current_bookings.present? %>
-      <% @user_current_bookings.each do |booking| %>
-        <p>Your booking id is =<%= booking.id %></p>
-        <p>Start date is <%= booking.start_date %></p>
-        <p>End date is <%= booking.end_date %></p>
-        <p>Price = $<%= booking.item.price %></p>
-        <%= link_to "Delete booking", booking_path(booking), method: :delete, class: "btn btn-danger"%>
-        <% end %>
-        <% else %>
-        <p>You do not have any current bookings</p>
-        <% end %>
-      </div>
-
-
-        <!-- Past Bookings I made with Add Review button "@user_past_bookings" -->
-
-        <div class="card">
-          <h2> My past bookings </h2>
-          <% if @user_past_bookings.present? %>
-          <% @user_past_bookings.each do |booking| %>
-          <p>Your booking id is #<%= booking.id %></p>
-          <p>Start date is <%= booking.start_date %></p>
-          <p>End date is <%= booking.end_date %></p>
-          <p>Price = $<%= booking.item.price %></p>
-          <%= link_to "Add a Review", new_booking_review_path(booking), class: "btn btn-success"%>
-          <% end %>
-          <% else %>
-          <p>You do not have any past bookings</p>
-          <% end %>
-
-          <!-- My uploaded items bookings -->
-          <div class="card">
-            <h2>My items for rent</h2>
-            <% if @my_items_booked.present? %>
-              <% @my_items_booked.each do |booking| %>
-              <p>Booking id is =<%= booking.id %></p>
-              <p>Start date is <%= booking.start_date %></p>
-              <p>End date is <%= booking.end_date %></p>
-              <p>Price = $<%= booking.item.price %></p>
-              <% if booking.review.nil? %>
-              <p>This item does not have a review yet</p>
-              <% else %>
-              <p>Reviews<%= booking.review.content %></p>
-              <% end %>
-              <% end %>
-              <% else %>
-              <p>Your items have not been booked</p>
-              <% end %>
-          </div>
+<div class="d-flex flex-column w-100">
+    <div class="col ml-5 flex-row">
+        <div class="row">
+            <div class="card mb-3" style="min-width: 20rem;">
+                <div class="card-header d-flex justify-content-between">
+                    <h6>My current bookings</h6>
+                </div>
+                <div class="card-body">
+                    <% if @user_current_bookings.present? %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Booking ID#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Start date</th>
+                                <th scope="col">End date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @user_current_bookings.each do |booking| %>
+                            <tr>
+                                <th scope="row"><%= booking.id %></th>
+                                <td><%= @user_current_bookings_hash["#{booking.id}"][0].name %></td>
+                                <td><%= @user_current_bookings_hash["#{booking.id}"][0].price %> AUD</td>
+                                <td><%= booking.start_date.strftime('%m/%d/%Y') %></td>
+                                <td><%= booking.end_date.strftime('%m/%d/%Y') %></td>
+                            </tr>
+                            <%end%>
+                        </tbody>
+                    </table>
+                    <% else %>
+                    <p>You do not have any current bookings</p>
+                    <% end %>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 25rem;">
+                <div class="card-header d-flex justify-content-between">
+                    <h6>My previous bookings</h6>
+                </div>
+                <div class="card-body">
+                    <% if @user_past_bookings.present? %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Booking ID#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Start date</th>
+                                <th scope="col">End date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @user_past_bookings.each do |booking| %>
+                            <tr>
+                                <th scope="row"><%= booking.id %></th>
+                                <td><%= @user_past_bookings_hash["#{booking.id}"][0].name %></td>
+                                <td><%= @user_past_bookings_hash["#{booking.id}"][0].price %> AUD</td>
+                                <td><%= booking.start_date.strftime('%m/%d/%Y') %></td>
+                                <td><%= booking.end_date.strftime('%m/%d/%Y') %></td>
+                            </tr>
+                            <%end%>
+                        </tbody>
+                    </table>
+                    <% else %>
+                    <p>You do not have any previous bookings</p>
+                    <% end %>
+                </div>
+            </div>
+            <div class="card mb-3" style="max-width: 25rem;">
+                <div class="card-header d-flex justify-content-between">
+                    <h6>My clothing items uploaded</h6>
+                </div>
+                <div class="card-body">
+                    <% if @my_items_booked.present? %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Booking ID#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Start date</th>
+                                <th scope="col">End date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @my_items_booked.each do |booking| %>
+                            <tr>
+                                <th scope="row"><%= booking.id %></th>
+                                <td><%= @my_items_booked_hash["#{booking.id}"][0].name %></td>
+                                <td><%= @my_items_booked_hash["#{booking.id}"][0].price %> AUD</td>
+                                <td><%= booking.start_date.strftime('%m/%d/%Y') %></td>
+                                <td><%= booking.end_date.strftime('%m/%d/%Y') %></td>
+                            </tr>
+                            <%end%>
+                        </tbody>
+                    </table>
+                    <% else %>
+                    <p>You have not uploaded any clothing items</p>
+                    <% end %>
+                </div>
+            </div>
         </div>
     </div>
+</div>
