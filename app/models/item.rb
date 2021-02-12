@@ -3,10 +3,10 @@ class Item < ApplicationRecord
 
   has_one_attached :photo
 
-  has_many :item_categories, dependent: :destroy
+  # has_many :item_categories, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :reviews, :through => :bookings, dependent: :destroy
-  has_many :categories, through: :item_categories
+  # has_many :categories, through: :item_categories
   validates :name, presence: true
   validates :size, presence: true
   validates :price, presence: true
