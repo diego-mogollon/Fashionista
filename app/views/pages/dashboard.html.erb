@@ -51,7 +51,11 @@
               <p>Start date is <%= booking.start_date %></p>
               <p>End date is <%= booking.end_date %></p>
               <p>Price = $<%= booking.item.price %></p>
+              <% if booking.review.nil? %>
+              <p>This item does not have a review yet</p>
+              <% else %>
               <p>Reviews<%= booking.review.content %></p>
+              <% end %>
               <% end %>
               <% else %>
               <p>Your items have not been booked</p>
