@@ -20,3 +20,31 @@
     margin-top: 5px;
   }
 }
+
+.logo-text {
+  &:hover {
+    color: $primary;
+  }
+}
+
+.effect-underline:after {
+  content: '';
+  position: relative;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 1px solid $primary;
+  margin-top: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale(0,1);
+  transform: scale(0,1);
+}
+
+.effect-underline:hover:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
