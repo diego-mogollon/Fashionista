@@ -28,7 +28,7 @@
     <div class="row mt-5">
         <% if current_user.id != @item.user_id %>
         <div class="col pt-3">
-            <%= link_to "Rent", new_items_booking_path(@item), class: "class: "button review"" %>
+            <%= link_to "Rent", new_item_booking_path(@item), class: "button review" %>
         </div>
         <%else%>
         <div class="col pt-3">
