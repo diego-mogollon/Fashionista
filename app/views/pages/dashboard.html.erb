@@ -32,7 +32,7 @@
           <h2> My past bookings </h2>
           <% if @user_past_bookings.present? %>
           <% @user_past_bookings.each do |booking| %>
-          <p>Your booking id is =<%= booking.id %></p>
+          <p>Your booking id is #<%= booking.id %></p>
           <p>Start date is <%= booking.start_date %></p>
           <p>End date is <%= booking.end_date %></p>
           <p>Price = $<%= booking.item.price %></p>
