@@ -27,11 +27,11 @@
     </div>
     <div class="row mt-5">
         <% if current_user.id != @item.user_id %>
-        <div class="col pt-3">
+        <div class="col-6 pt-3">
             <%= link_to "Rent", new_item_booking_path(@item), class: "button review" %>
         </div>
         <%else%>
-        <div class="col pt-3">
+        <div class="col-6 pt-3">
             <%= link_to "Edit", edit_item_path(@item), class: "button edit" %>
             <%= link_to "Delete", item_path(@item), method: :delete, class: "button delete" %>
         </div>
