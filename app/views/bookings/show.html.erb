@@ -10,13 +10,19 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">Thanks for booking <%= @item.name %></h5>
+                    <div class="row">
+                        <div class="col-8">
+                            <h5 class="card-title">Thanks for booking <%= @item.name %></h5>
+                        </div>
+                        <div class="col-4 pl-5">
+                            <%= link_to image_tag('edit.svg', class: "auth-icon edit mr-2"), edit_item_booking_path %>
+                            <%= link_to image_tag('delete.svg', class: "auth-icon delete"), item_booking_path(@booking), method: :delete %>
+                        </div>
+                    </div>
                     <p class="card-text">From: <%= @booking.start_date.strftime('%m/%d/%Y') %></p>
                     <p class="card-text">To: <%= @booking.end_date.strftime('%m/%d/%Y') %></p>
                     <%= link_to "Continue shopping", items_path, class: "button rent" %>
                     <%= link_to "My dashboard", dashboard_path, class: "button confirm" %>
-                    <%= link_to "Edit Your Booking", edit_item_booking_path, class: "button edit" %>
-                    <%= link_to "Cancel Your Booking", item_booking_path(@booking), class: "button delete", method: :delete, data: { confirm: "Are you sure?" } %>
                 </div>
             </div>
         </div>
