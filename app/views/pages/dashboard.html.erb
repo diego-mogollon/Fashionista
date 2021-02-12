@@ -59,9 +59,6 @@
                                 <td><%= booking.start_date.strftime('%m/%d/%Y') %></td>
                                 <td><%= booking.end_date.strftime('%m/%d/%Y') %></td>
                             </tr>
-                            <tr>
-                              <%= link_to "Add a review", new_booking_review_path(booking), class: "button review" %>
-                            </tr>
                             <%end%>
                         </tbody>
                     </table>
