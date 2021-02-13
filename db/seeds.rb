@@ -91,7 +91,7 @@ booking_1 = Booking.create(user_id: user_1.id, item_id: item_2.id, start_date: T
 booking_2 = Booking.create(user_id: user_2.id, item_id: item_1.id, start_date: Time.now, end_date: Time.now + 1.day)
 
 
-[['Date Night', 'category_images/cocktail'], ['Daytime', 'category_images/sun'],['Work','category_images/suitcase'], ['Casual', 'category_images/dress'], ['Everyday', 'category_images/clothes-hanger'], ['Maternity', 'category_images/mother']].each  do |category|
+[['Date Night', 'category_images/cocktail.svg'], ['Daytime', 'category_images/sun.svg'],['Work','category_images/suitcase.svg'], ['Casual', 'category_images/dress.svg'], ['Everyday', 'category_images/clothes-hanger.svg'], ['Maternity', 'category_images/mother.svg']].each  do |category|
   Category.create(name: category[0], image: category[1])
   end
 
